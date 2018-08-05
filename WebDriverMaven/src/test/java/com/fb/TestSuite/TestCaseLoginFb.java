@@ -2,52 +2,60 @@ package com.fb.TestSuite;
 
 import org.testng.annotations.Test;
 
+import com.fb.DataHandler.HomePageDataHandler;
+import com.fb.DataHandler.LandingPageDataHandler;
+import com.fb.DataObjects.HomePageData;
+import com.fb.DataObjects.LandingPageData;
 import com.fb.GenericReusable.WebElementAction;
-import com.fb.GenericReusable.XlsReader;
-import com.fb.PageObjects.HomePage;
+import com.fb.PageObjects.HomePageElement;
 import com.fb.PageObjects.LandingPageElement;
 import com.fb.TestBase.Browser;
 
 
-
 public class TestCaseLoginFb extends Browser{
 	
-	LandingPageElement Lpage;
-	HomePage Home;
+	
 	WebElementAction actions;
-	XlsReader ReadExcel;
+	
+	LandingPageElement Lpage;
+	LandingPageData LpageData;
+	LandingPageDataHandler LDataHandler=new LandingPageDataHandler();
+	
+	HomePageElement Hpage;
+	HomePageData HpageData;
+	HomePageDataHandler HDataHandler=new HomePageDataHandler();
+	
 	
 	public TestCaseLoginFb() {
 		
-		ReadExcel = new XlsReader(System.getProperty("user.dir")+"//Data//excelWork.xlsx");
+		LpageData=LDataHandler.getLandingPageData("TestCaseRegisterUser1");
+		HpageData=HDataHandler.getHomePageData("TestCaseRegisterUser1");
 	}
 	
 	@Test
-	public void TestLogin() {
+	public void TestLogin() throws InterruptedException {
 		
 		Step01ProvideEmailandPass();
-		Step02ClickLogin();
-		Step03ClickSearchBox();
+		Step02ClickSearchBox();//individually handle through try catch
 	}
 
 	private void Step01ProvideEmailandPass() {
 		Lpage = new LandingPageElement(driver);
-		String emailId = ReadExcel.getCellData("LandingPage", "TestCaseRegisterUser1", "EmailId");
-		String password = ReadExcel.getCellData("LandingPage", "TestCaseRegisterUser1", "Password");
-		Lpage.Login(emailId, password);
+		Lpage.Login(LpageData.loginEmail, LpageData.loginPassword);
 	}
 	
-	private void Step02ClickLogin() {
+    /*private void Step02ClickLogin() {
 			Lpage.btnLogin.click();
-	}
+	}*/
 	
-	private void Step03ClickSearchBox() {
+	private void Step02ClickSearchBox() throws InterruptedException {
+		Hpage= new HomePageElement(driver);
 		
-		Home = new HomePage(driver);
-		
-		//hide/show notification box made page black and no operation can be made without manually disabling the alert box.
-		actions.alertAccept();
-		Home.txtSearchBox.click();
+		Thread.sleep(6000);
+		Hpage.txtSearchBox.sendKeys(HpageData.SearchBox);
+		Hpage.searchButton.click();
+		Thread.sleep(6000);
+		Hpage.myFriendId.click();
 	}
 
 }

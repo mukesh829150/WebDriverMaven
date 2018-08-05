@@ -65,7 +65,7 @@ public class LandingPageElement{
 	
 	public boolean Login(String UserName, String Password) {
 		try {
-			elementAction.waitForVisibility(txtLoginEmail).sendKeys(UserName);
+			txtLoginEmail.sendKeys(UserName);
 			txtLoginPassword.sendKeys(Password);
 			btnLogin.click();
 			return true;

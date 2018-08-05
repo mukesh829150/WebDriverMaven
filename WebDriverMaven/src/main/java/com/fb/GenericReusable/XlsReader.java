@@ -39,7 +39,7 @@ public class XlsReader {
 		sheet=workbook.getSheet(sheetName);
 		int RowNum=sheet.getLastRowNum();
 		
-		for(int i=1; i<RowNum;i++) {
+		for(int i=1; i<=RowNum;i++) {
 			row=sheet.getRow(i);
 			cell=row.getCell(0);
 			if(cell.getStringCellValue().equalsIgnoreCase(RowName)) {
@@ -47,12 +47,13 @@ public class XlsReader {
 				}
 			}
 		//RowNumber=1
-		for(int i=0;i<sheet.getRow(0).getLastCellNum();i++) {
+		for(int i=1;i<=sheet.getRow(0).getLastCellNum();i++) {
 			row=sheet.getRow(0);
 			cell=row.getCell(i);
 			
 			if(cell.getStringCellValue().equalsIgnoreCase(ColumnName)) {
 				colNumber=i;
+				break;
 			}
 		}
 			//colNumber=1;
