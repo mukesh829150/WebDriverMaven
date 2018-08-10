@@ -16,9 +16,14 @@ public class TimelinePageElement {
 	}
 	
 	@FindBy(xpath="//span[contains(@class, '_1vp5')]")
-	WebElement homeNameButton;
+	public WebElement homeNameButton;
 	
-	@FindBy(xpath="//li[2]//a[@class='_6-6']")
-	WebElement homeAboutButton;
+	/*@FindBy(xpath="//li[2]//a[@class='_6-6']")
+	WebElement homeAboutButton;*/
 
+	@FindBy(xpath="//div[@class='_1mf _1mj']")
+	public WebElement txtPost;
+	
+	@FindBy(xpath="//button[contains(@class, '_1mf7')]")
+	public WebElement btnPost;
 }

@@ -39,7 +39,7 @@ public class TestCaseLoginFb extends Browser{
 		Step02ClickSearchBox();//individually handle through try catch
 	}
 
-	private void Step01ProvideEmailandPass() {
+	public void Step01ProvideEmailandPass() {
 		Lpage = new LandingPageElement(driver);
 		Lpage.Login(LpageData.loginEmail, LpageData.loginPassword);
 	}
