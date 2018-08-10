@@ -52,6 +52,7 @@ public class TestCaseLoginFb extends Browser{
 		Hpage= new HomePageElement(driver);
 		
 		Thread.sleep(6000);
+		Hpage.txtSearchBox.click();
 		Hpage.txtSearchBox.sendKeys(HpageData.SearchBox);
 		Hpage.searchButton.click();
 		Thread.sleep(6000);
