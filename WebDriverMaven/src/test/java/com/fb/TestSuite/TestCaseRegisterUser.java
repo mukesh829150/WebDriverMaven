@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import com.fb.DataHandler.LandingPageDataHandler;
 import com.fb.DataObjects.LandingPageData;
 import com.fb.PageObjects.LandingPageElement;
+import com.fb.ReportingAndListeners.Reporting;
 import com.fb.TestBase.Browser;
 
 
@@ -19,8 +20,9 @@ public class TestCaseRegisterUser extends Browser{
 		LandingPageData=landingPageHandler.getLandingPageData("TestCaseRegisterUser1");
 	}
 	
-	@Test
+	@Test(priority=1)
 	public void TestRegister(){
+		Reporting.logger=Reporting.report.createTest("RegisterUser");
 		Step01ProvideFirstNameAndBday();
 		Step02ClickOnSignUP();
 	}

@@ -4,7 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+
+import com.fb.ReportingAndListeners.Reporting;
 import com.fb.ReportingAndListeners.WebDriverListner;
 
 public class Browser {
@@ -13,6 +18,11 @@ public class Browser {
 	public EventFiringWebDriver driver; // This is an instance of driver which will listen to the events in selenium with the help of method called register
 	public WebDriverListner eventListner;//=new WebDriverListner();//It's a Selenium Class where the events are listed
 	public static String driverPath = System.getProperty("user.dir") + "//src//main//resources//drivers";
+	
+	@BeforeTest
+	public void report(){
+		Reporting.startReport();
+	}
 	
 	@BeforeMethod
 	public void OpenChromeBrowser() {	
@@ -33,9 +43,14 @@ public class Browser {
 		dr = new FirefoxDriver();
 	}
 	
-	//@AfterMethod
+	@AfterMethod
 	public void CloseBrowser() {
 		driver.close();
 	}
+	
+	@AfterTest
+		public void CloseTest() {
+			Reporting.report.flush();
+		}
 
 }

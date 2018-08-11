@@ -9,6 +9,7 @@ import com.fb.DataObjects.LandingPageData;
 import com.fb.GenericReusable.WebElementAction;
 import com.fb.PageObjects.HomePageElement;
 import com.fb.PageObjects.LandingPageElement;
+import com.fb.ReportingAndListeners.Reporting;
 import com.fb.TestBase.Browser;
 
 
@@ -24,24 +25,31 @@ public class TestCaseLoginFb extends Browser{
 	HomePageElement Hpage;
 	HomePageData HpageData;
 	HomePageDataHandler HDataHandler=new HomePageDataHandler();
+	public String  rowname;
 	
 	
 	public TestCaseLoginFb() {
+		rowname="TestCaseRegisterUser1";
+		LpageData=LDataHandler.getLandingPageData(rowname);
+		HpageData=HDataHandler.getHomePageData(rowname);
 		
-		LpageData=LDataHandler.getLandingPageData("TestCaseRegisterUser1");
-		HpageData=HDataHandler.getHomePageData("TestCaseRegisterUser1");
 	}
 	
-	@Test
+	@Test(priority=2)
 	public void TestLogin() throws InterruptedException {
+		Reporting.logger=Reporting.report.createTest(rowname);
 		
 		Step01ProvideEmailandPass();
 		Step02ClickSearchBox();//individually handle through try catch
+		
+		//Reporting.report.flush();
 	}
 
 	public void Step01ProvideEmailandPass() {
 		Lpage = new LandingPageElement(driver);
 		Lpage.Login(LpageData.loginEmail, LpageData.loginPassword);
+		
+		
 	}
 	
     /*private void Step02ClickLogin() {

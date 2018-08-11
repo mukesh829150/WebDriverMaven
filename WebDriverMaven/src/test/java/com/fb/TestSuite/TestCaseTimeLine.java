@@ -9,6 +9,7 @@ import com.fb.DataObjects.LandingPageData;
 import com.fb.DataObjects.TimelineData;
 import com.fb.PageObjects.LandingPageElement;
 import com.fb.PageObjects.TimelinePageElement;
+import com.fb.ReportingAndListeners.Reporting;
 import com.fb.TestBase.Browser;
 
 public class TestCaseTimeLine extends Browser{
@@ -26,13 +27,14 @@ public class TestCaseTimeLine extends Browser{
 	
 	
 	public TestCaseTimeLine(){
+		
 		LpageData = LDataHandler.getLandingPageData("TestCaseRegisterUser1");
 		TpageData = TDataHandler.getTimeLineData("TestCaseRegisterUser1");
 	}
 	
-	@Test
+	@Test(priority=3)
 	public void TestTimeLine() throws InterruptedException{
-		
+		Reporting.logger=Reporting.report.createTest("TimeLine");
 		Step01Login();
 		Step02PostinTimeline();
 	}
