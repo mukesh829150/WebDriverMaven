@@ -1,5 +1,6 @@
 package com.fb.GenericReusable;
 
+
 import java.io.File;
 import java.util.Set;
 
@@ -119,5 +120,15 @@ public class WebElementAction extends Browser{
 			System.out.println("File not found");
 			return "fail";
 		}
+	}
+
+	public void verifyMethodStatus(String methodStatus, String passMessaage, String failMessage) {
+		try {
+		//	if(methodStatus.equals)
+			
+		}catch(Exception e) {
+			
+		}
+		
 	}
 }

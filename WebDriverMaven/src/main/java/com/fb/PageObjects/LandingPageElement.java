@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
@@ -121,6 +122,7 @@ public class LandingPageElement{
 				Reporting.logger.log(Status.PASS, "Enter <b>First Name</b> :"+LPageData.firstName,MediaEntityBuilder.createScreenCaptureFromPath(elementAction.takeScreenshot()).build());
 			}catch(Exception e){
 				Reporting.logger.log(Status.FAIL,"Not able to Enter First Name");
+				Assert.assertEquals(false, true);
 			}
 			
 			try{
@@ -197,7 +199,6 @@ public class LandingPageElement{
 			
 			return true;
 			}catch(Exception e) {
-			e.printStackTrace();
 			return false;
 		}
 	}
