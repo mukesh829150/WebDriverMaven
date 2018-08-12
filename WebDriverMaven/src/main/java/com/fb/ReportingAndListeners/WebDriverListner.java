@@ -83,7 +83,7 @@ public class WebDriverListner implements WebDriverEventListener{
 
 	public void beforeClickOn(WebElement arg0, WebDriver arg1) {
 		// TODO Auto-generated method stub
-		 wait= new WebDriverWait(arg1,60);
+		wait= new WebDriverWait(arg1,60);
 		wait.until(ExpectedConditions.elementToBeClickable(arg0));
 		System.out.println("Going to click " +arg0);
 		

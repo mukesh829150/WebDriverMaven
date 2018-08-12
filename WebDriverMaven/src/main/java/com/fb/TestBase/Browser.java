@@ -15,7 +15,7 @@ import com.fb.ReportingAndListeners.WebDriverListner;
 public class Browser {
 	
 	public static WebDriver dr;
-	public EventFiringWebDriver driver; // This is an instance of driver which will listen to the events in selenium with the help of method called register
+	public static EventFiringWebDriver driver; // This is an instance of driver which will listen to the events in selenium with the help of method called register
 	public WebDriverListner eventListner;//=new WebDriverListner();//It's a Selenium Class where the events are listed
 	public static String driverPath = System.getProperty("user.dir") + "//src//main//resources//drivers";
 	

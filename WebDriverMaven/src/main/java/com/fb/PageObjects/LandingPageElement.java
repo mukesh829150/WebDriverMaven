@@ -6,8 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.aventstack.extentreports.Status;
+import com.fb.DataObjects.LandingPageData;
 import com.fb.GenericReusable.WebElementAction;
 import com.fb.ReportingAndListeners.Reporting;
+
+
 
 public class LandingPageElement{
 	
@@ -109,17 +112,87 @@ public class LandingPageElement{
 			return false;
 		}
 	}
-	public boolean Register(String FirstName, String LastName, String Mobile, String Password,  String BirthDay,  String BirthMonth, String BirthYear) {
+	public boolean Register(LandingPageData LPageData) {
 		try {
-			txtFirstName.sendKeys(FirstName);
-			txtLasttName.sendKeys(LastName);
-			txtMobile.sendKeys(Mobile);
-			txtRegPassword.sendKeys(Password);
-			elementAction.selectElementByVisibleText(drpRegBirthday, BirthDay);
-			elementAction.selectElementByVisibleText(drpRegBirthmonth, BirthMonth);
-			elementAction.selectElementByVisibleText(drpRegBirthyear, BirthYear);
-			radMale.click();
-			SignUp.click();
+			try{
+				txtFirstName.sendKeys(LPageData.firstName);
+				//Reporting.logger.pass("Enter <b>First Name</b> :"+LPageData.firstName, MediaBuilder.createScreenCaptureFromPath("screenshot.png").build());
+				
+			}catch(Exception e){
+				Reporting.logger.log(Status.FAIL,"Not able to Enter First Name");
+			}
+			
+			try{
+				txtLasttName.sendKeys(LPageData.lastName);
+				Reporting.logger.log(Status.PASS,"Enter <b>Last Name</b> :"+LPageData.lastName);
+			}catch(Exception e){
+				Reporting.logger.log(Status.FAIL,"Not able to Enter Last Name");
+			}
+			
+			try{
+				txtMobile.sendKeys(LPageData.mobile);
+				Reporting.logger.log(Status.PASS,"Enter <b>Mobile</b> :"+LPageData.mobile);
+			}catch(Exception e){
+				Reporting.logger.log(Status.FAIL,"Not able to Enter Mobile");
+			}
+			
+			try{
+				txtRegPassword.sendKeys(LPageData.loginPassword);
+				Reporting.logger.log(Status.PASS,"Enter <b>Password</b> :"+LPageData.loginPassword);
+			}catch(Exception e){
+				Reporting.logger.log(Status.FAIL,"Not able to Enter Password");
+			}
+			
+			try{
+				elementAction.selectElementByVisibleText(drpRegBirthday, LPageData.birthday);
+				Reporting.logger.log(Status.PASS,"Enter <b>BirthDay</b> :"+LPageData.birthday);
+			}catch(Exception e){
+				Reporting.logger.log(Status.FAIL,"Not able to Select BirthDay");
+			}
+			
+			try{
+				elementAction.selectElementByVisibleText(drpRegBirthmonth, LPageData.birthmonth);
+				Reporting.logger.log(Status.PASS,"Enter <b>BirthMonth</b> :"+LPageData.birthmonth);
+			}catch(Exception e){
+				Reporting.logger.log(Status.FAIL,"Not able to Select BirthMonth");
+			}
+			
+			try{
+				elementAction.selectElementByVisibleText(drpRegBirthyear, LPageData.birthyear);
+				Reporting.logger.log(Status.PASS,"Enter <b>BirthYear</b> :"+LPageData.birthyear);
+			}catch(Exception e){
+				Reporting.logger.log(Status.FAIL,"Not able to Select BirthYear");
+			}
+			
+			/*try{
+				radMale.click();
+				Reporting.logger.log(Status.PASS,"Click on Gender Button");
+			}catch(Exception e){
+				Reporting.logger.log(Status.FAIL,"Not able to Click Gender");
+			}*/
+			
+			try{
+				if(LPageData.gender.equalsIgnoreCase("Male"))
+				{
+					radMale.click();
+					Reporting.logger.log(Status.PASS,"Gender is Male");
+				}
+				else{
+					radFemale.click();
+				Reporting.logger.log(Status.PASS,"Gender is Female");
+				}
+			}catch(Exception e){
+				Reporting.logger.log(Status.FAIL,"Genderisnot given proper");	
+			}
+			
+			
+			
+			try{
+				SignUp.click();
+				Reporting.logger.log(Status.PASS,"Click on Sign Up Button");
+			}catch(Exception e){
+				Reporting.logger.log(Status.FAIL,"Not able to Click Sign Up");
+			}
 			
 			return true;
 			}catch(Exception e) {

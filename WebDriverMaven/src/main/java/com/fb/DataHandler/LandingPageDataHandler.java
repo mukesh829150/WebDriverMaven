@@ -16,6 +16,7 @@ public class LandingPageDataHandler extends DataHandler {
 		LandingPData.setbirthday(xls.getCellData(sheetName,rowName,"Birthday"));
 		LandingPData.setbirthmonth(xls.getCellData(sheetName,rowName,"BirthMonth"));
 		LandingPData.setbirthyear(xls.getCellData(sheetName,rowName,"BirthYear"));
+		LandingPData.setGender(xls.getCellData(sheetName,rowName,"Gender"));
 		return LandingPData;
 	}
 }

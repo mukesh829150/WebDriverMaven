@@ -1,9 +1,13 @@
 package com.fb.GenericReusable;
 
+import java.io.File;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -99,4 +103,21 @@ public class WebElementAction extends Browser{
 	            .until(ExpectedConditions.visibilityOf(element));
 	}
 
+	/*Author: Abhishek
+	 * Method Function:
+	 * Last modified Date:
+	 */
+	public String takeScreenshot(){
+		try{
+		TakesScreenshot screenshot=(TakesScreenshot)driver;
+		File srcFile=screenshot.getScreenshotAs(OutputType.FILE);
+		String ParentFilePath=System.getProperty("user.dir")+"/test-output/Screens/"+java.lang.System.currentTimeMillis();
+		File destFile=new File(ParentFilePath+"screen.png");
+		FileUtils.copyFile(srcFile, destFile);
+		return ParentFilePath+"screen.png";
+		}catch(Exception e){
+			System.out.println("File not found");
+			return "fail";
+		}
+	}
 }

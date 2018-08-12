@@ -10,6 +10,8 @@ public class LandingPageData {
 	public String birthday;
 	public String birthmonth;
 	public String birthyear;
+	public String gender;
+	
 	
 	public String getLoginEmail() {
 		return loginEmail;
@@ -51,6 +53,11 @@ public class LandingPageData {
 		this.birthyear = birthyear;
 	}
 
-	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
 }

@@ -17,7 +17,7 @@ public class TestCaseRegisterUser extends Browser{
 	LandingPageDataHandler landingPageHandler=new LandingPageDataHandler();
 	
 	public TestCaseRegisterUser() {
-		LandingPageData=landingPageHandler.getLandingPageData("TestCaseRegisterUser1");
+		LandingPageData=landingPageHandler.getLandingPageData("NewUser2");
 	}
 	
 	@Test(priority=1)
@@ -36,16 +36,16 @@ public class TestCaseRegisterUser extends Browser{
 
 private void Step01ProvideFirstNameAndBday(){
 	Lpage=new LandingPageElement(driver);
-	String firstName=LandingPageData.firstName;
+	/*String firstName=LandingPageData.firstName;
 	String lastName=LandingPageData.lastName;
 	String mobile=LandingPageData.mobile;
 	String password=LandingPageData.loginPassword;
 	String birthday=LandingPageData.birthday;
 	String birthmonth=LandingPageData.birthmonth;
-	String birthyear=LandingPageData.birthyear;
+	String birthyear=LandingPageData.birthyear;*/
 	
-	Lpage.Register(firstName, lastName, mobile, password, birthday, birthmonth, birthyear);
-		
+	//Lpage.Register(firstName, lastName, mobile, password, birthday, birthmonth, birthyear);
+	Lpage.Register(LandingPageData);	
 	}
 
 	
