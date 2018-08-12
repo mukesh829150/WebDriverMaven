@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.fb.DataObjects.LandingPageData;
 import com.fb.GenericReusable.WebElementAction;
@@ -116,8 +117,8 @@ public class LandingPageElement{
 		try {
 			try{
 				txtFirstName.sendKeys(LPageData.firstName);
-				//Reporting.logger.pass("Enter <b>First Name</b> :"+LPageData.firstName, MediaBuilder.createScreenCaptureFromPath("screenshot.png").build());
-				
+				//Reporting.logger.pass("Enter <b>Last Name</b> :"+LPageData.lastName,MediaEntityBuilder.createScreenCaptureFromPath(elementAction.takeScreenshot()).build());
+				Reporting.logger.log(Status.PASS, "Enter <b>First Name</b> :"+LPageData.firstName,MediaEntityBuilder.createScreenCaptureFromPath(elementAction.takeScreenshot()).build());
 			}catch(Exception e){
 				Reporting.logger.log(Status.FAIL,"Not able to Enter First Name");
 			}
