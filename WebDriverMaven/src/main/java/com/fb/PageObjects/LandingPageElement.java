@@ -122,7 +122,7 @@ public class LandingPageElement{
 				Reporting.logger.log(Status.PASS, "Enter <b>First Name</b> :"+LPageData.firstName,MediaEntityBuilder.createScreenCaptureFromPath(elementAction.takeScreenshot()).build());
 			}catch(Exception e){
 				Reporting.logger.log(Status.FAIL,"Not able to Enter First Name");
-				Assert.assertEquals(false, true);
+				Assert.assertTrue(false, "Not able to Enter First Name");
 			}
 			
 			try{

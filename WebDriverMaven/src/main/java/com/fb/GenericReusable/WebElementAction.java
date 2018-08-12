@@ -13,7 +13,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
+import com.aventstack.extentreports.Status;
+import com.fb.ReportingAndListeners.Reporting;
 import com.fb.TestBase.Browser;
 
 
@@ -124,10 +127,15 @@ public class WebElementAction extends Browser{
 
 	public void verifyMethodStatus(String methodStatus, String passMessaage, String failMessage) {
 		try {
-		//	if(methodStatus.equals)
+			if(methodStatus.equalsIgnoreCase("pass")){
+				Reporting.logger.log(Status.PASS, passMessaage);
+			}else{
+				Reporting.logger.log(Status.FAIL, failMessage);
+				Assert.assertEquals(false, true);
+			}
 			
 		}catch(Exception e) {
-			
+			Assert.assertEquals(false, true);
 		}
 		
 	}
