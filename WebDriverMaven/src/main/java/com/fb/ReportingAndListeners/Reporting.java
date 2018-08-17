@@ -11,7 +11,7 @@ public class Reporting {
 	public static ExtentTest  logger;
 	
 	public static void startReport(){	
-		htmlReporter=new ExtentHtmlReporter(System.getProperty("user.dir")+"/test-output/"+java.lang.System.currentTimeMillis()+"ExtentReport.html");
+		htmlReporter=new ExtentHtmlReporter(System.getProperty("user.dir")+"/test-output/ExtentReport.html");
 		htmlReporter.config().setDocumentTitle("Selenium ExtentReport");
 		
 		report= new ExtentReports();
