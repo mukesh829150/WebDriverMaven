@@ -23,6 +23,39 @@ public class XlsReader {
 		}		
 	}
 	
+	public int getRowCount(String sheetname){
+		sheet=workbook.getSheet(sheetname);
+		return sheet.getLastRowNum();
+	}
+	
+	public String getCellData(String sheetName, int rowNumber, String colName) {
+		String text = null;
+		sheet=workbook.getSheet(sheetName);
+		
+		for(int i=0;i<sheet.getRow(0).getLastCellNum();i++){
+			String CellValue=sheet.getRow(0).getCell(i).getStringCellValue();
+			if(CellValue.equalsIgnoreCase(colName)){
+				text=getCellData(sheetName,rowNumber,i);
+				break;
+			}
+		}
+		return text;		
+	}
+	
+	public String getCellData(String sheetName, String rowName, int colNumber) {
+		String text = null;
+		sheet=workbook.getSheet(sheetName);
+		int rowNum = row.getLastCellNum();
+		for(int i=0;i<rowNum;i++){
+			String CellValue=sheet.getRow(i).getCell(0).getStringCellValue();
+			if(CellValue.equalsIgnoreCase(rowName)){
+				text=getCellData(sheetName,i,colNumber);
+				break;
+			}
+		}
+		return text;		
+	}
+	
 	public String getCellData(String sheetName, int rowNumber, int colNumber) {
 		String text;
 		sheet=workbook.getSheet(sheetName);	
