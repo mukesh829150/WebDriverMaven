@@ -6,6 +6,7 @@ import java.util.List;
 import org.testng.annotations.Test;
 
 import com.fb.GenericReusable.XlsReader;
+import com.fb.ReportingAndListeners.ReportingRevised;
 
 
 public class PrintTestStatus{
@@ -13,7 +14,8 @@ public class PrintTestStatus{
 	String sheetName = "PrintStatus";
 	
 	@Test
-	public void printStatus(){	 
+	public void printStatus(){	
+		ReportingRevised.logger=ReportingRevised.report.createTest("New test");
 		/* String cellvalue = xls.getCellData(sheetName, "Login to Fb", "To be Executed");
 		 System.out.println(cellvalue);*/
 		 

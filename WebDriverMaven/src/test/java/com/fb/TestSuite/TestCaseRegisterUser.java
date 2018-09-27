@@ -30,7 +30,7 @@ public class TestCaseRegisterUser extends Browser{
 		Reporting.logger=Reporting.report.createTest("RegisterUser");
 		
 		methodStatus=Step01ProvideRegistrationDetails();
-		webElementAction.verifyMethodStatus(methodStatus,"Registration Successful","Registratioon Unsuccessful");
+		webElementAction.verifyMethodStatus(methodStatus,"Registration Successful","Registration Unsuccessful");
 		
 
 		methodStatus=Step02VerifyRegistrationDetails();

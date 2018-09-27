@@ -7,8 +7,8 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 public class Reporting {
 
 	public static ExtentHtmlReporter htmlReporter;
-	public static ExtentReports report;
-	public static ExtentTest  logger;
+	public static ExtentReports report;//performs report generation
+	public static ExtentTest  logger;//log
 	
 	public static void startReport(){	
 		htmlReporter=new ExtentHtmlReporter(System.getProperty("user.dir")+"/test-output/ExtentReport.html");
