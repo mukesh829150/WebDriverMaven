@@ -1,13 +1,20 @@
 package com.fb.ReportingAndListeners;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.ITestAnnotation;
+import org.testng.internal.annotations.IAnnotationTransformer;
 
-public class WebDriverListner implements WebDriverEventListener{
+import com.fb.TestBase.Browser;
+
+public class WebDriverListner implements WebDriverEventListener,IAnnotationTransformer{
 	
 	WebDriverWait wait;
 
@@ -132,4 +139,11 @@ public class WebDriverListner implements WebDriverEventListener{
 		
 	}
 
+	@Override
+	public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
+		System.out.println(testMethod);
+		if(!Browser.getExecutionLst().contains(testMethod)){
+			annotation.setEnabled(false);
+		}
+	}
 }
