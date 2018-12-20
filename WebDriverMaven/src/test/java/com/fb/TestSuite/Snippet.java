@@ -5,22 +5,22 @@ public class Snippet {
 	public String name2="abc";
 	int a=2;
 	
-	public Snippet(){
+	public void Snippet(){
 		System.out.println(name);
 	}
 	
-	public Snippet(String xyz){
+	public void Snippet(String xyz){
 		System.out.println(name2);
 		
 	}
 	
-	public Snippet(int xyz){
+	public void Snippet(int xyz){
 		System.out.println(a);
 	}
 	
 	public static void main(String[] args) {
 		
-		Snippet object=new Snippet();
+		Snippet obj=new Snippet();
 	}
 	
 }

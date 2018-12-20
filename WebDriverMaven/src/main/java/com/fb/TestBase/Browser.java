@@ -51,14 +51,14 @@ public class Browser {
 	}
 	
 	@BeforeMethod
-	public void OpenChromeBrowser() {	
+	public void OpenChromeBrowser(String Url) {	
 		String chromePath = driverPath + "//chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", chromePath);
 		dr = new ChromeDriver();
 		driver=new EventFiringWebDriver(dr);
 		eventListner=new WebDriverListner();
 		driver.register(eventListner);
-		driver.navigate().to("https://www.facebook.com/");
+		driver.navigate().to(Url);
 		driver.manage().window().maximize();
 	}
 //	@BeforeMethod

@@ -25,14 +25,14 @@ public class RobotFileUpload extends Browser{
 		
 		driver.findElement(By.id("imagesrc")).click();
 		
-		StringSelection selection = new StringSelection("C:\\Users\\user\\Desktop\\Table for Fine of Fees.pdf");
+		StringSelection selection = new StringSelection("C:\\Users\\user\\Desktop\\CC\\New folder\\IIM Calcutta PGPex Class of 2017-e-Brochure.pdf");
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
 		
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_V);
-		
 		robot.setAutoDelay(2000);
-		
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_V);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 	}
