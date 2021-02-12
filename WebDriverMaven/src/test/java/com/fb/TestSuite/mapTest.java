@@ -28,7 +28,7 @@ public class mapTest {
 		object.add("Cena");
 		
 		List<String> objectTwo = new LinkedList<String>();
-		objectTwo.add("Abhiske");
+		objectTwo.add("Abhishek");
 		objectTwo.add("Singh");
 		mapListTwo.put("listOne", object);
 		mapListTwo.put("listTWo", objectTwo);
