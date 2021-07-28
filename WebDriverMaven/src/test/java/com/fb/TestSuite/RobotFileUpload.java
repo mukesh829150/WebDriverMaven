@@ -4,12 +4,12 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import com.fb.TestBase.Browser;
-import com.sun.glass.events.KeyEvent;
 
 public class RobotFileUpload extends Browser{
 	
